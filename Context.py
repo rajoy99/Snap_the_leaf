@@ -37,3 +37,4 @@ class Context():
         """
 
         result= self._strategy.ml_predict(image_path)
+        return result

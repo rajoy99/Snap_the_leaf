@@ -5,7 +5,7 @@ from tensorflow import keras
 from skimage import io
 from tensorflow.keras.preprocessing import image
 from concrete import Hlw
-from concrete import ResNetPredictor
+from concrete import ResNetPredictor,DenseNetPredictor
 from Context import Context
 
 
@@ -63,14 +63,14 @@ def upload():
 
         ### Testing Strategy Pattern 
 
-        resnet50object = ResNetPredictor()
-        predicament = resnet50object.ml_predict(file_path)
+        dnetobject = DenseNetPredictor()
+        predicament = dnetobject.ml_predict(file_path)
         print("Show predicament : ",predicament)
 
         ### testing context
-        ctuni66=Context(resnet50object)
+        ctuni66=Context(dnetobject)
         preds = ctuni66.nn_predict(file_path)
-        print(preds)
+        print("Show context predictions: ",preds)
 
         # x = x.reshape([64, 64]);
         disease_class = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 'Potato___Early_blight',
