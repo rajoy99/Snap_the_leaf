@@ -115,7 +115,7 @@ def breedplot():
     plt.barh(disease_class,a)   
     plt.tight_layout()
     plt.savefig('probability_bars.png')
-    return render_template('untitled1.html', name = 'probability_bars', url ='probability_bars.png')
+    return render_template('untitled1.html', name = 'probability_bars', url ='static/images/probability_bars.png')
 
 
 
