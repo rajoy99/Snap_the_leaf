@@ -109,7 +109,7 @@ def upload():
 
 
 @app.route('/breedplot')
-def breedplot(disease_class,a):
+def breedplot():
 
     plt.figure(figsize=(8,7))
     plt.barh(disease_class,a)   
