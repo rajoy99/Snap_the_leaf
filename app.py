@@ -110,12 +110,14 @@ def upload():
 
 @app.route('/breedplot')
 def breedplot():
+    global disease_class
+    global a
 
     plt.figure(figsize=(8,7))
     plt.barh(disease_class,a)   
     plt.tight_layout()
     plt.savefig('probability_bars.png')
-    return render_template('untitled1.html', name = 'probability_bars', url ='static/images/probability_bars.png')
+    return render_template('plotting.html', name = 'probability_bars', url ='static/images/probability_bars.png')
 
 
 
