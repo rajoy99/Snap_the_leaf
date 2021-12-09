@@ -36,4 +36,4 @@ class Context():
         implementing multiple versions of the algorithm on its own.
         """
 
-        result= self.strategy.ml_predict(self,image_path)
+        result= self._strategy.ml_predict(image_path)

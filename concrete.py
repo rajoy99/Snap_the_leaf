@@ -16,7 +16,7 @@ class ResNetPredictor(Strategy):
         x = np.array(x, 'float32')
         x /= 255
         preds = self.model.predict(x)
-        return "resnet worked"
+        return preds
 
 class Hlw():
 
