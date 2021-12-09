@@ -79,6 +79,8 @@ def upload():
                          'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato__Target_Spot',
                          'Tomato__Tomato_YellowLeaf__Curl_Virus', 'Tomato__Tomato_mosaic_virus', 'Tomato_healthy']
         a = preds[0]
+        by_class = dict(zip(disease_class,a))
+        print(by_class)
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
