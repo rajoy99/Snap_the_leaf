@@ -16,7 +16,7 @@
     
 <center>
 
-<div style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(188, 194, 180));">
+<div style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(188, 194, 180));">
     <br><h2 style="color: #991251">Snap the Leaf</h2><br>
     
     <form id="upload-file" method="post" enctype="multipart/form-data">
@@ -37,9 +37,7 @@
          <div>
             <button type="button" class="btn btn-warning" id="btn-predict">Predict!</button>
          </div>
-         <div>
-            <button type="button" class="btn btn-success" id="btn-showproba">Show probability for each class!</button>
-         </div>
+
          
     </div>
 
@@ -49,9 +47,12 @@
 
     <h3 id="result">
         <span> </span>
-    </h3>
 
-</div>
+    </h3>
+    <button action="{{url_for('plot_png')}}">Forward</button>
+
+
+    </div>
 
     
 </center><br><br>
