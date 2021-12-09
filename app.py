@@ -79,11 +79,14 @@ def upload():
         print("Show context predictions: ",preds)
 
         # x = x.reshape([64, 64]);
+        global disease_class
+
         disease_class = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 'Potato___Early_blight',
                          'Potato___Late_blight', 'Potato___healthy', 'Tomato_Bacterial_spot', 'Tomato_Early_blight',
                          'Tomato_Late_blight', 'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot',
                          'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato__Target_Spot',
                          'Tomato__Tomato_YellowLeaf__Curl_Virus', 'Tomato__Tomato_mosaic_virus', 'Tomato_healthy']
+        global a 
         a = 100*preds[0]
         by_class = dict(zip(disease_class,a))
         print(by_class)
@@ -92,10 +95,11 @@ def upload():
         result=disease_class[ind]
         def chartTest(disease_class,a):
   
-            plt.figure(figsize=(8,12))
-            plt.tight_layout()
+            plt.figure(figsize=(8,7))
             plt.barh(disease_class,a)   
+            plt.tight_layout()
             plt.savefig('new_plot.png')
+
 
 
         chartTest(disease_class,a)
@@ -104,9 +108,14 @@ def upload():
 
 
 
-# @app.route('/test')
+@app.route('/breedplot')
+def breedplot(disease_class,a):
 
-#   return render_template('untitled1.html', name = 'new_plot', url ='/static/images/new_plot.png')
+    plt.figure(figsize=(8,7))
+    plt.barh(disease_class,a)   
+    plt.tight_layout()
+    plt.savefig('probability_bars.png')
+    return render_template('untitled1.html', name = 'probability_bars', url ='probability_bars.png')
 
 
 
