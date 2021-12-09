@@ -5,6 +5,8 @@ from tensorflow import keras
 from skimage import io
 from tensorflow.keras.preprocessing import image
 from concrete import Hlw
+from concrete import ResNetPredictor
+from Context import Context
 
 
 # Flask utils
@@ -54,11 +56,19 @@ def upload():
         f.save(file_path)
 
         # Make prediction
-        preds = model_predict(file_path, model)
+        # preds = model_predict(file_path, model)
         # print(preds[0])
         objtst= Hlw()
         ans=objtst.printa()
 
+        ### Testing Strategy Pattern 
+
+        resnet50object = ResNetPredictor()
+        # predicament = resnet50object.ml_predict(file_path)
+
+        ### testing context
+        ctuni66=Context(resnet50object)
+        preds = ctuni66.nn_predict(file_path)
 
 
         # x = x.reshape([64, 64]);
@@ -71,7 +81,7 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        return ans
+        return result
     return None
 
 
