@@ -7,6 +7,11 @@ from tensorflow.keras.preprocessing import image
 from concrete import Hlw
 from concrete import ResNetPredictor,DenseNetPredictor
 from Context import Context
+import io
+import random
+from flask import Response
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 
 # Flask utils
@@ -78,7 +83,7 @@ def upload():
                          'Tomato_Late_blight', 'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot',
                          'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato__Target_Spot',
                          'Tomato__Tomato_YellowLeaf__Curl_Virus', 'Tomato__Tomato_mosaic_virus', 'Tomato_healthy']
-        a = preds[0]
+        a = 100*preds[0]
         by_class = dict(zip(disease_class,a))
         print(by_class)
         ind=np.argmax(a)
@@ -86,6 +91,30 @@ def upload():
         result=disease_class[ind]
         return result
     return None
+
+
+
+
+
+@app.route('/plot.png')
+def plot_png():
+    fig = create_figure()
+    output = io.BytesIO()
+    FigureCanvas(fig).print_png(output)
+    return Response(output.getvalue(), mimetype='image/png')
+
+def create_figure():
+    fig = Figure()
+    axis = fig.add_subplot(1, 1, 1)
+    xs = range(100)
+    ys = [random.randint(1, 50) for x in xs]
+    axis.plot(xs, ys)
+    return fig
+
+
+
+
+
 
 
 if __name__ == '__main__':
