@@ -4,6 +4,7 @@ import numpy as np
 from tensorflow import keras
 from skimage import io
 from tensorflow.keras.preprocessing import image
+from concrete import Hlw
 
 
 # Flask utils
@@ -54,7 +55,11 @@ def upload():
 
         # Make prediction
         preds = model_predict(file_path, model)
-        print(preds[0])
+        # print(preds[0])
+        objtst= Hlw()
+        ans=objtst.printa()
+
+
 
         # x = x.reshape([64, 64]);
         disease_class = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 'Potato___Early_blight',
@@ -66,7 +71,7 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        return result
+        return ans
     return None
 
 

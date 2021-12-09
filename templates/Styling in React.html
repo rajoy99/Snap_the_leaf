@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Styling in React</title>
+  <script src="Styling%20in%20React_files/react.js"></script>
+  <script src="Styling%20in%20React_files/react-dom.js"></script>
+  <script src="Styling%20in%20React_files/babel.js"></script>
+  
+  <style>
+    #container {
+      padding: 50px;
+      background-color: #FFF;
+    }
+
+
+
+  </style>
+<script>"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var destination = document.querySelector("#container");
+
+var Letter = function (_React$Component) {
+  _inherits(Letter, _React$Component);
+
+  function Letter() {
+    _classCallCheck(this, Letter);
+
+    return _possibleConstructorReturn(this, (Letter.__proto__ || Object.getPrototypeOf(Letter)).apply(this, arguments));
+  }
+
+  _createClass(Letter, [{
+    key: "render",
+    value: function render() {
+
+      var letterStyle = {
+        padding: 10,
+        margin: 10,
+        backgroundColor: this.props.bgcolor,
+        color: "#333",
+        display: "inline-block",
+        fontFamily: "monospace",
+        fontSize: 32,
+        textAlign: "center"
+      };
+
+      return React.createElement(
+        "div",
+        { style: letterStyle },
+        this.props.children
+      );
+    }
+  }]);
+
+  return Letter;
+}(React.Component);
+
+ReactDOM.render(React.createElement(
+  "div",
+  null,
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "S"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "N"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "A"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "P"
+  ),
+  React.createElement("br", null),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "T"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "H"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "E"
+  ),
+  React.createElement("br", null),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "L"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "E"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "A"
+  ),
+  React.createElement(
+    Letter,
+    { bgcolor: "#FFFF00" },
+    "F"
+  )
+), destination);
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIklubGluZSBCYWJlbCBzY3JpcHQiXSwibmFtZXMiOlsiZGVzdGluYXRpb24iLCJkb2N1bWVudCIsInF1ZXJ5U2VsZWN0b3IiLCJMZXR0ZXIiLCJsZXR0ZXJTdHlsZSIsInBhZGRpbmciLCJtYXJnaW4iLCJiYWNrZ3JvdW5kQ29sb3IiLCJwcm9wcyIsImJnY29sb3IiLCJjb2xvciIsImRpc3BsYXkiLCJmb250RmFtaWx5IiwiZm9udFNpemUiLCJ0ZXh0QWxpZ24iLCJjaGlsZHJlbiIsIlJlYWN0IiwiQ29tcG9uZW50IiwiUmVhY3RET00iLCJyZW5kZXIiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7QUFDSSxJQUFJQSxjQUFjQyxTQUFTQyxhQUFULENBQXVCLFlBQXZCLENBQWxCOztJQUVNQyxNOzs7Ozs7Ozs7Ozs2QkFHSzs7QUFFUCxVQUFJQyxjQUFjO0FBQ2RDLGlCQUFTLEVBREs7QUFFZEMsZ0JBQVEsRUFGTTtBQUdkQyx5QkFBaUIsS0FBS0MsS0FBTCxDQUFXQyxPQUhkO0FBSWRDLGVBQU8sTUFKTztBQUtkQyxpQkFBUyxjQUxLO0FBTWRDLG9CQUFZLFdBTkU7QUFPZEMsa0JBQVUsRUFQSTtBQVFkQyxtQkFBVztBQVJHLE9BQWxCOztBQVlBLGFBQ0U7QUFBQTtBQUFBLFVBQUssT0FBT1YsV0FBWjtBQUNHLGFBQUtJLEtBQUwsQ0FBV087QUFEZCxPQURGO0FBS0Q7Ozs7RUF0QmtCQyxNQUFNQyxTOztBQXlCM0JDLFNBQVNDLE1BQVQsQ0FDRTtBQUFBO0FBQUE7QUFDRTtBQUFDLFVBQUQ7QUFBQSxNQUFRLFNBQVEsU0FBaEI7QUFBQTtBQUFBLEdBREY7QUFFRTtBQUFDLFVBQUQ7QUFBQSxNQUFRLFNBQVEsU0FBaEI7QUFBQTtBQUFBLEdBRkY7QUFHRTtBQUFDLFVBQUQ7QUFBQSxNQUFRLFNBQVEsU0FBaEI7QUFBQTtBQUFBLEdBSEY7QUFJRTtBQUFDLFVBQUQ7QUFBQSxNQUFRLFNBQVEsU0FBaEI7QUFBQTtBQUFBLEdBSkY7QUFNRSxpQ0FORjtBQU9FO0FBQUMsVUFBRDtBQUFBLE1BQVEsU0FBUSxTQUFoQjtBQUFBO0FBQUEsR0FQRjtBQVFFO0FBQUMsVUFBRDtBQUFBLE1BQVEsU0FBUSxTQUFoQjtBQUFBO0FBQUEsR0FSRjtBQVNFO0FBQUMsVUFBRDtBQUFBLE1BQVEsU0FBUSxTQUFoQjtBQUFBO0FBQUEsR0FURjtBQVVFLGlDQVZGO0FBV0U7QUFBQyxVQUFEO0FBQUEsTUFBUSxTQUFRLFNBQWhCO0FBQUE7QUFBQSxHQVhGO0FBWUU7QUFBQyxVQUFEO0FBQUEsTUFBUSxTQUFRLFNBQWhCO0FBQUE7QUFBQSxHQVpGO0FBYUU7QUFBQyxVQUFEO0FBQUEsTUFBUSxTQUFRLFNBQWhCO0FBQUE7QUFBQSxHQWJGO0FBY0U7QUFBQyxVQUFEO0FBQUEsTUFBUSxTQUFRLFNBQWhCO0FBQUE7QUFBQTtBQWRGLENBREYsRUFpQkVuQixXQWpCRiIsImZpbGUiOiJJbmxpbmUgQmFiZWwgc2NyaXB0Iiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgdmFyIGRlc3RpbmF0aW9uID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIiNjb250YWluZXJcIik7XG4gICBcbiAgICBjbGFzcyBMZXR0ZXIgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnQge1xuXG5cbiAgICAgIHJlbmRlcigpIHtcblxuICAgICAgICB2YXIgbGV0dGVyU3R5bGUgPSB7XG4gICAgICAgICAgICBwYWRkaW5nOiAxMCxcbiAgICAgICAgICAgIG1hcmdpbjogMTAsXG4gICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6IHRoaXMucHJvcHMuYmdjb2xvcixcbiAgICAgICAgICAgIGNvbG9yOiBcIiMzMzNcIixcbiAgICAgICAgICAgIGRpc3BsYXk6IFwiaW5saW5lLWJsb2NrXCIsXG4gICAgICAgICAgICBmb250RmFtaWx5OiBcIm1vbm9zcGFjZVwiLFxuICAgICAgICAgICAgZm9udFNpemU6IDMyLFxuICAgICAgICAgICAgdGV4dEFsaWduOiBcImNlbnRlclwiXG4gICAgICAgIH07XG5cblxuICAgICAgICByZXR1cm4oXG4gICAgICAgICAgPGRpdiBzdHlsZT17bGV0dGVyU3R5bGV9PlxuICAgICAgICAgICAge3RoaXMucHJvcHMuY2hpbGRyZW59XG4gICAgICAgICAgPC9kaXY+XG4gICAgICAgICk7XG4gICAgICB9XG4gICAgfVxuICAgXG4gICAgUmVhY3RET00ucmVuZGVyKFxuICAgICAgPGRpdj5cbiAgICAgICAgPExldHRlciBiZ2NvbG9yPScjRkZGRjAwJz5TPC9MZXR0ZXI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5OPC9MZXR0ZXI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5BPC9MZXR0ZXI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5QPC9MZXR0ZXI+XG5cbiAgICAgICAgPGJyPjwvYnI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5UPC9MZXR0ZXI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5IPC9MZXR0ZXI+XG4gICAgICAgIDxMZXR0ZXIgYmdjb2xvcj1cIiNGRkZGMDBcIj5FPC9MZXR0ZXI+XG4gICAgICAgIDxicj48L2JyPlxuICAgICAgICA8TGV0dGVyIGJnY29sb3I9XCIjRkZGRjAwXCI+TDwvTGV0dGVyPlxuICAgICAgICA8TGV0dGVyIGJnY29sb3I9XCIjRkZGRjAwXCI+RTwvTGV0dGVyPlxuICAgICAgICA8TGV0dGVyIGJnY29sb3I9XCIjRkZGRjAwXCI+QTwvTGV0dGVyPlxuICAgICAgICA8TGV0dGVyIGJnY29sb3I9XCIjRkZGRjAwXCI+RjwvTGV0dGVyPlxuICAgICAgPC9kaXY+LFxuICAgICAgZGVzdGluYXRpb25cbiAgICApO1xuICAiXX0=</script></head>
+  
+<body>
+  <div id="container"><div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">S</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">N</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">A</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">P</div><br><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">T</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">H</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">E</div><br><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">L</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">E</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">A</div><div style="padding: 10px; margin: 10px; background-color: rgb(255, 255, 0); color: rgb(51, 51, 51); display: inline-block; font-family: monospace; font-size: 32px; text-align: center;">F</div></div></div>
+
+
+  <div style="margin-left: 50px;">
+    <img src="../green-leaf-transparent-background-17.png" alt="" width=200px height=200px>
+  </div>
+
+  <script type="text/babel">
+    var destination = document.querySelector("#container");
+   
+    class Letter extends React.Component {
+
+
+      render() {
+
+        var letterStyle = {
+            padding: 10,
+            margin: 10,
+            backgroundColor: this.props.bgcolor,
+            color: "#333",
+            display: "inline-block",
+            fontFamily: "monospace",
+            fontSize: 32,
+            textAlign: "center"
+        };
+
+
+        return(
+          <div style={letterStyle}>
+            {this.props.children}
+          </div>
+        );
+      }
+    }
+   
+    ReactDOM.render(
+      <div>
+        <Letter bgcolor='#FFFF00'>S</Letter>
+        <Letter bgcolor="#FFFF00">N</Letter>
+        <Letter bgcolor="#FFFF00">A</Letter>
+        <Letter bgcolor="#FFFF00">P</Letter>
+
+        <br></br>
+        <Letter bgcolor="#FFFF00">T</Letter>
+        <Letter bgcolor="#FFFF00">H</Letter>
+        <Letter bgcolor="#FFFF00">E</Letter>
+        <br></br>
+        <Letter bgcolor="#FFFF00">L</Letter>
+        <Letter bgcolor="#FFFF00">E</Letter>
+        <Letter bgcolor="#FFFF00">A</Letter>
+        <Letter bgcolor="#FFFF00">F</Letter>
+      </div>,
+      destination
+    );
+  </script>
+
+  
+
+  
+</body></html>
