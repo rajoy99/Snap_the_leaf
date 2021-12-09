@@ -10,6 +10,7 @@ from Context import Context
 import io
 import random
 from flask import Response
+import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -89,27 +90,24 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
+        def chartTest(disease_class,a):
+  
+            plt.figure(figsize=(8,12))
+            plt.tight_layout()
+            plt.barh(disease_class,a)   
+            plt.savefig('new_plot.png')
+
+
+        chartTest(disease_class,a)
         return result
     return None
 
 
 
+# @app.route('/test')
 
+#   return render_template('untitled1.html', name = 'new_plot', url ='/static/images/new_plot.png')
 
-@app.route('/plot.png')
-def plot_png():
-    fig = create_figure()
-    output = io.BytesIO()
-    FigureCanvas(fig).print_png(output)
-    return Response(output.getvalue(), mimetype='image/png')
-
-def create_figure(by_class):
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    xs = range(100)
-    ys = [random.randint(1, 50) for x in xs]
-    axis.bar(range(len(by_class)), by_class.values(), tick_label=by_class.keys())
-    return fig
 
 
 
