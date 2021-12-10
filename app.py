@@ -114,7 +114,7 @@ def breedplot():
     global a
     img_url='static/images/probability_bars.png'
     plt.figure(figsize=(8,7))
-    plt.barh(disease_class,a,color='yellow')   
+    plt.barh(disease_class,a,color='purple')   
     plt.tight_layout()
     plt.savefig(img_url)
     time.sleep(10)
