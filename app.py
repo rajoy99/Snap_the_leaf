@@ -5,7 +5,7 @@ from tensorflow import keras
 from skimage import io
 from tensorflow.keras.preprocessing import image
 from concrete import Hlw
-from concrete import ResNetPredictor,DenseNetPredictor
+from concrete import ResNetPredictor,DenseNetPredictor,CNNPredictor
 from Context import Context
 import io
 import random
@@ -79,13 +79,15 @@ def upload():
         ######## Concrete Predictor #########################
         mapping={"resnet": ResNetPredictor(),
         "dnet":DenseNetPredictor(),
-        "cnn":,
-        "imagenet":}
+        "cnn":CNNPredictor(),
+        "imagenet":7}
+
+        predictor_object = mapping[select_pred]
 
 
 
         ### testing context
-        ctuni66=Context(dnetobject)
+        ctuni66=Context(predictor_object)
         preds = ctuni66.nn_predict(file_path)
         print("Show context predictions: ",preds)
 
@@ -104,16 +106,7 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        # def chartTest(disease_class,a):
-  
-        #     plt.figure(figsize=(8,7))
-        #     plt.barh(disease_class,a)   
-        #     plt.tight_layout()
-        #     plt.savefig('new_plot.png')
 
-
-
-        # chartTest(disease_class,a)
         return result
     return None
 
@@ -124,8 +117,8 @@ def breedplot():
     global disease_class
     global a
     img_url='static/images/probability_bars.png'
-    plt.figure(figsize=(8,7))
-    plt.barh(disease_class,a,color='purple')   
+    plt.figure(figsize=(6,15))
+    plt.barh(disease_class,a,color='salmon')   
     plt.tight_layout()
     plt.savefig(img_url)
     time.sleep(10)
