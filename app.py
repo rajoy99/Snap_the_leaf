@@ -14,6 +14,9 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import time 
+import seaborn as sns
+sns.set_style("darkgrid", {"grid.color": ".6", "grid.linestyle": ":"})
+sns.set_context("notebook", font_scale=1.4, rc={"lines.linewidth": 2.5})
 
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
@@ -49,9 +52,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['POST'])
 def upload():
     if request.method == 'POST':
+        
         # Get the file from post request
         f = request.files['file']
         select_pred = request.form.get('predictor')
@@ -106,24 +110,32 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
+        img_url='static/images/probability_bars.png'
+        plt.figure(figsize=(15,6))
+        plt.barh(disease_class,a,color='green')   
+        plt.tight_layout()
+        plt.savefig(img_url)
+        
+        
+        return render_template('resulting.html',result=result,img_url=img_url)
 
-        return result
+
     return None
 
 
 
-@app.route('/breedplot')
-def breedplot():
-    global disease_class
-    global a
-    img_url='static/images/probability_bars.png'
-    plt.figure(figsize=(15,6))
-    plt.barh(disease_class,a,color='salmon')   
-    plt.tight_layout()
-    plt.savefig(img_url)
-    time.sleep(10)
+# @app.route('/breedplot')
+# def breedplot():
+#     global disease_class
+#     global a
+#     img_url='static/images/probability_bars.png'
+#     plt.figure(figsize=(15,6))
+#     plt.barh(disease_class,a,color='yellow')   
+#     plt.tight_layout()
+#     plt.savefig(img_url)
+#     time.sleep(10)
 
-    return render_template('plotting.html', name = 'probability_bars', url = img_url)
+#     return render_template('plotting.html', name = 'probability_bars', url = img_url)
 
 
 
