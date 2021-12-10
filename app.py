@@ -5,7 +5,7 @@ from tensorflow import keras
 from skimage import io
 from tensorflow.keras.preprocessing import image
 from concrete import Hlw
-from concrete import ResNetPredictor,DenseNetPredictor,CNNPredictor
+from concrete import ResNetPredictor,DenseNetPredictor,CNNPredictor,ImageNetPredictor
 from Context import Context
 import io
 import random
@@ -80,7 +80,7 @@ def upload():
         mapping={"resnet": ResNetPredictor(),
         "dnet":DenseNetPredictor(),
         "cnn":CNNPredictor(),
-        "imagenet":7}
+        "imagenet":ImageNetPredictor()}
 
         predictor_object = mapping[select_pred]
 
@@ -117,7 +117,7 @@ def breedplot():
     global disease_class
     global a
     img_url='static/images/probability_bars.png'
-    plt.figure(figsize=(6,15))
+    plt.figure(figsize=(15,6))
     plt.barh(disease_class,a,color='salmon')   
     plt.tight_layout()
     plt.savefig(img_url)

@@ -21,7 +21,7 @@ class ResNetPredictor(Strategy):
 
 class DenseNetPredictor(Strategy):
 
-    model=tf.keras.models.load_model('PlantDNet.h5',compile=False)
+    model=tf.keras.models.load_model('densenet.h5',compile=False)
 
     def ml_predict(self,image_path):
         img = image.load_img(image_path, grayscale=False, target_size=(64,64))
@@ -48,6 +48,22 @@ class CNNPredictor(Strategy):
         x /= 255
         preds = self.model.predict(x)
         return preds
+
+class ImageNetPredictor(Strategy):
+
+    model =tf.keras.models.load_model('imagenet.h5',compile=False)
+
+
+    def ml_predict(self,image_path):
+        img = image.load_img(image_path, grayscale=False, target_size=(128, 128))
+        show_img = image.load_img(image_path, grayscale=False, target_size=(128, 128))
+        x = image.img_to_array(img)
+        x = np.expand_dims(x, axis=0)
+        x = np.array(x, 'float32')
+        x /= 255
+        preds = self.model.predict(x)
+        return preds
+
 
 
 
