@@ -13,7 +13,7 @@ from flask import Response
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
-
+import time 
 
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
@@ -112,12 +112,14 @@ def upload():
 def breedplot():
     global disease_class
     global a
-
+    img_url='static/images/probability_bars.png'
     plt.figure(figsize=(8,7))
-    plt.barh(disease_class,a)   
+    plt.barh(disease_class,a,color='yellow')   
     plt.tight_layout()
-    plt.savefig('probability_bars.png')
-    return render_template('plotting.html', name = 'probability_bars', url ='static/images/probability_bars.png')
+    plt.savefig(img_url)
+    time.sleep(10)
+
+    return render_template('plotting.html', name = 'probability_bars', url = img_url)
 
 
 
