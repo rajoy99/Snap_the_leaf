@@ -93,16 +93,16 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        def chartTest(disease_class,a):
+        # def chartTest(disease_class,a):
   
-            plt.figure(figsize=(8,7))
-            plt.barh(disease_class,a)   
-            plt.tight_layout()
-            plt.savefig('new_plot.png')
+        #     plt.figure(figsize=(8,7))
+        #     plt.barh(disease_class,a)   
+        #     plt.tight_layout()
+        #     plt.savefig('new_plot.png')
 
 
 
-        chartTest(disease_class,a)
+        # chartTest(disease_class,a)
         return result
     return None
 
