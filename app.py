@@ -54,6 +54,9 @@ def upload():
     if request.method == 'POST':
         # Get the file from post request
         f = request.files['file']
+        select_pred = request.form.get('predictor')
+
+        print(select_pred)
 
         # Save the file to ./uploads
         basepath = os.path.dirname(__file__)
@@ -72,6 +75,14 @@ def upload():
         dnetobject = DenseNetPredictor()
         predicament = dnetobject.ml_predict(file_path)
         print("Show predicament : ",predicament)
+
+        ######## Concrete Predictor #########################
+        mapping={"resnet": ResNetPredictor(),
+        "dnet":DenseNetPredictor(),
+        "cnn":,
+        "imagenet":}
+
+
 
         ### testing context
         ctuni66=Context(dnetobject)

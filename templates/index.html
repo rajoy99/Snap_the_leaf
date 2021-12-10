@@ -35,11 +35,13 @@
     <form id="upload-file" method="post" enctype="multipart/form-data">
          <input type="file" name="file" class="btn btn-outline-info" id="imageUpload" accept=".png, .jpg, .jpeg">
 
-         <p>Please select the algorithm: </p>
-         <input type="radio" id="resnet" name="algo" value="resnet">
-         <label for="resnet">Res Net</label><br>
-         <input type="radio" id="densenet" name="algo" value="densenet">
-         <label for="DenseNet">Dense Net</label><br>
+         <label for="predictor">Choose a Predictor Model:</label>
+         <select name="predictor" id="predictor">
+           <option value="resnet">ResNet</option>
+           <option value="dnet">Dense Net </option>
+           <option value="cnn">Baseline CNN</option>
+           <option value="imagenet">ImageNet</option>
+         </select>
 
 
     </form>
