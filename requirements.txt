@@ -140,7 +140,7 @@ tenacity==8.0.1
 tensorboard 
 tensorboard-plugin-wit==1.8.0
 
-tensorflow 
+tensorflow-cpu==2.6.0
 tensorflow-estimator 
 termcolor==1.1.0
 
