@@ -87,7 +87,7 @@ requests
 requests-oauthlib==1.3.0
 
 rsa 
-scikit-image==0.17.2
+scikit-image==0.18.3
 
 scipy 
 seaborn 
