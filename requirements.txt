@@ -91,7 +91,7 @@ scikit-image==0.18.3
 
 scipy 
 seaborn 
-sip==4.19.13
+sip==6.1.1
 
 six 
 tensorboard 
