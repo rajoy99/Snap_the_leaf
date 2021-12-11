@@ -7,8 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>STL Homepage</title>
+
+    <style>
+        .form-submit-button {
+            background:#0066A2;
+            color:white;
+            border-style:outset;
+            border-color:#0066A2;
+            height:50px;
+            width:100px;
+            font:bold15px arial,sans-serif;
+            text-shadow:none;
+       }
+    </style>
 </head>
-<body>
+<body style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(238, 240, 236));">
     
 <center>
 
@@ -16,8 +29,8 @@
 
     <div id="heading" style="white-space:nowrap">
 
-        <div id="image" style="display:inline;">
-            <img src="../static/images/green-leaf-transparent-background-17.png" alt=logo height="32" width="32"/>
+        <div id="image" style=" margin-top:60px">
+            <img src="../static/images/leaf-logo-300x300.png" alt=logo height="42" width="42"/>
         </div>
     
         <div id="texts" style="display:inline; white-space:nowrap; color:purple; font-size: 40px;"> 
@@ -38,7 +51,9 @@
            <option value="cnn">Baseline CNN</option>
            <option value="imagenet">ImageNet</option>
          </select>
-
+         <br>
+         <br>
+         <br>
          <input type="submit" value="Predict the disease">
 
     </form>

@@ -48,8 +48,15 @@ def model_predict(img_path, model):
 
 @app.route('/', methods=['GET'])
 def index():
-    # Main page
-    return render_template('index.html')
+    # Face
+    return render_template('face.html')
+
+
+@app.route('/proceedhome', methods=['POST'])
+def proceedhome():
+    # Home Page
+    return render_template('home.html')
+
 
 
 @app.route('/predict', methods=['POST'])
