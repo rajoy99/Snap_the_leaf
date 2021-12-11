@@ -5,7 +5,7 @@ import numpy as np
 
 class ResNetPredictor(Strategy):
 
-    model =tf.keras.models.load_model('resnet.h5',compile=False)
+    model =tf.keras.models.load_model('resnet2.h5',compile=False)
 
 
     def ml_predict(self,image_path):
