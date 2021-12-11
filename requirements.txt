@@ -138,7 +138,7 @@ six
 tenacity==8.0.1
 
 tensorboard 
-tensorboard-plugin-wit==1.6.0
+tensorboard-plugin-wit==1.8.0
 
 tensorflow 
 tensorflow-estimator 
