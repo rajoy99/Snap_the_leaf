@@ -91,11 +91,11 @@ scikit-image==0.18.3
 
 scipy 
 seaborn 
-sip==6.1.1
+sip==5.0.0
 
 six 
 tensorboard 
-tensorboard-plugin-wit==1.6.0
+tensorboard-plugin-wit==1.8.0
 
 tensorflow 
 tensorflow-estimator 
