@@ -14,8 +14,8 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import time 
-import checkvalidtion,usefulhasing,filesys,registeruser,connection
-
+import checkvalidtion,usefulhasing,filesys,registeruser,connection,detectuser,userrequestforverdict,dataforadminpanel,updateforadminans,findfordetail
+import iputuserhelp
 
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
@@ -23,16 +23,15 @@ from werkzeug.utils import secure_filename
 # from gevent.pywsgi import WSGIServer
 
 # Define a flask app
-app = Flask(__name__)
+
+app = Flask(__name__,template_folder='templates')
+
+app.secret_key='asdsdfsdfs13df_df%&'
 
 # Model saved with Keras model.save()
 
 # You can also use pretrained model from Keras
 # Check https://keras.io/applications/
-
-model =tf.keras.models.load_model('resnet.h5',compile=False)
-print('Model loaded. Check http://127.0.0.1:5000/')
-
 
 def model_predict(img_path, model):
     img = image.load_img(img_path, grayscale=False, target_size=(100, 100))
@@ -43,17 +42,37 @@ def model_predict(img_path, model):
     x /= 255
     preds = model.predict(x)
     return preds
-
-
+ 
+ 
 @app.route('/', methods=['GET'])
 def index():
-    
-    # first page
-    return render_template("face.html")
+    # Face
+    return redirect('face')
+@app.route('/face', methods=['GET'])
+def face():
+    return render_template('face.html')
+ 
+ 
+@app.route('/proceedhome', methods=['POST'])
+def proceedhome():
+    if not 'userid' in session:
+        return redirect('face')
+
+
+    # Home Page
+    return render_template('home.html')
+ 
+ 
+
+ 
+ 
+
 
 
 @app.route('/predict', methods=['POST'])
 def upload():
+    if not 'userid' in session:
+        return redirect('face')
     if request.method == 'POST':
         
         # Get the file from post request
@@ -61,23 +80,48 @@ def upload():
         select_pred = request.form.get('predictor')
 
         print(select_pred)
+        path="D:\Snap_the_leaf-master\static"
+        adding="\images\probability_bars.png"
+        pathforgraph=os.path.join(path,adding)
+        email=session['userid']
+        pw=session['pw']
+        print(email,"   ",pw)
+        kala=usefulhasing.u_and_p_hash(email,pw)
+        
+        folderpath="posts"
+        path=os.path.join(path,folderpath)
+        folderpath="/".join([folderpath, kala])
+        path2=os.path.join(path,kala)
+        filename=f.filename
+  
+        if not filesys.folder_exist(path):
+            filesys.create_folder_for_user(path)
+            
+        
+        if not filesys.folder_exist(path2):
+                filesys.create_folder_for_user(path2)
+        destination = "/".join([path2, filename])
+        filepath="/".join([folderpath, filename])
+        filepathidentity=usefulhasing.p_hash(filepath) 
+            
+        userrequestforverdict.requestgiven(filepath,kala,filepathidentity)
+        try:
+            f.save(destination)
 
-        # Save the file to ./uploads
-        basepath = os.path.dirname(__file__)
-        file_path = os.path.join(
-            basepath, 'uploads', secure_filename(f.filename))
-        f.save(file_path)
+        except:
+            print("did not saved")
+ 
+        
 
-        # Make prediction
-        # preds = model_predict(file_path, model)
-        # print(preds[0])
+        
+
         objtst= Hlw()
         ans=objtst.printa()
 
         ### Testing Strategy Pattern 
 
         dnetobject = DenseNetPredictor()
-        predicament = dnetobject.ml_predict(file_path)
+        predicament = dnetobject.ml_predict(destination)
         print("Show predicament : ",predicament)
 
         ######## Concrete Predictor #########################
@@ -92,7 +136,7 @@ def upload():
 
         ### testing context
         ctuni66=Context(predictor_object)
-        preds = ctuni66.nn_predict(file_path)
+        preds = ctuni66.nn_predict(destination)
         print("Show context predictions: ",preds)
 
         # x = x.reshape([64, 64]);
@@ -117,99 +161,158 @@ def upload():
         plt.savefig(img_url)
         
         
-        return render_template('resulting.html',result=result,img_url=img_url)
+        return render_template("resulting.html",path=filepathidentity,img=img_url)
+            
+        
+        
+        
+        
 
 
     return None
 
+@app.route("/plot/<disease_class>/<a>")
+def plot(disease_class, a ):
+    
+    
+   
+   
+    img_url='static/images/probability_bars.png'
+    plt.figure(figsize=(15,6))
+    plt.barh(disease_class,a,color='green')   
+    plt.tight_layout()
+    plt.savefig(img_url)
+    return render_template("resulting.html",img_url)
+
+
+@app.route("/needadminhelp/<identity>")
+
+def needadminhelp(identity):
+        if not 'userid' in session:
+         return redirect('face')
+        email=session['userid']
+        pw=session['pw']
+        print(email,"   ",pw)
+        vdict="r"
+        kala=usefulhasing.u_and_p_hash(email,pw)
+        print("i am inside needadminhelp")
+        iputuserhelp.insertvalues(kala,identity,vdict)
+        return redirect(url_for('home'))
+        
+
+
+    
+
 
 @app.route("/login",methods = ['POST']) 
 def login():
-    
-    if request.method == 'POST':
-        print("i am here")
-
-        if 'userid' in session:
+     if 'userid' in session:
             print("i am also here")
-            return render_template("newsfeed.html")
-        if request.method=="POST":
-            user = request.form["em"]
-            pw=request.form["pw"]
-            print(user)
-            print(pw)
-            
-            password =usefulhasing.p_hash(pw)
+            return redirect(url_for("home"))
+     if request.method == 'POST':
+        
+
+        
+
+        
+        user = request.form["em"]
+        pw=request.form["pw"]
+        password =usefulhasing.p_hash(pw)
+        print(user)
+        print(pw)
+        if detectuser.isadmin(user,pw):
+            print("i am under adminlogin")
+            session['userid']=user
+            session['pw']=pw  
+            return redirect(url_for("adminpanel"))
+        else:
+
+        
+        
             if(checkvalidtion.em_exit(user,password)):
 
                 session['userid']=user
                 session['pw']=pw
-                return redirect("/newsfeed")
+                return redirect(url_for("home"))
 
             else:
-                return redirect('logout')
+                return redirect(url_for('logout'))
+@app.route("/adminpanel")
+def adminpanel():
+   if not 'userid' in session:
+        return redirect('face')
+   data= dataforadminpanel.diseaseforconformation()
 
+   return render_template("admin_page.html",data=data)
+@app.route("/completeverdict/<x>/<inputVal>")
+def completeverdict(x,inputVal):
+    if not 'userid' in session:
+        return redirect('face')
+    
+    verdict='c'
+    updateforadminans.updatedetails(x,verdict,inputVal)
+    return redirect(url_for('adminpanel'))
 
+@app.route("/logout",methods=['GET'])
+
+def logout():
+    if request.method=="GET":
+     if 'userid' in session:
+          session.pop('userid',None)
+          session.pop('pw',None)
+          
+
+     return redirect(url_for('face'))
+
+@app.route("/home",methods=['GET','POST'])
+def home():
+    if not 'userid' in session:
+        return redirect('face')
+    return render_template('home.html')
 
 @app.route("/signup",methods=['GET','POST'])
 def signup():
+
+            print("i am for testing")
             session.pop('userid',None)
             session.pop('pw',None)
             if request.method == 'POST':
-                email=request.form["email"]
-                pw=request.form['pswd']
-                firstname=request.form['firstname']
-                country=request.form['country']
-                if not checkvalidtion.isregisteredemail(email):
+                print("i am in request method")
+                email=request.form["em"]
+                pw=request.form['pwd']
+                if not detectuser.isadmin(email,pw):
+                 print("user is normal")
+                  
+                 if not checkvalidtion.isregisteredemail(email):
                         
                 
                         registeruser.registration(email,pw)
                             
-                        kala=usefulhasing.u_and_p_hash(email,pw) #this will go on folder
-                        path="F:\websesh\static"
-                        folder="userprofile"
-                        folderpath="userprofile"
-                        path=os.path.join(path,folder)
-                        path2=os.path.join(path,kala)
-                        folderpath="/".join([folderpath, kala])#this will go on path
+                        kala=usefulhasing.u_and_p_hash(email,pw)  #this will go on folder
                         
-                        
-                        print(kala)
-                        
-                        if not filesys.folder_exist(path):
-                            filesys.create_folder_for_user(path)
-                            
-                            
-                        if not filesys.folder_exist(path2):
-                                filesys.create_folder_for_user(path2)
-                       
-                        for upload in request.files.getlist("file"):
-                            print("mey tera",upload.filename)
-                            filename = upload.filename    #this will go on file name 
-                            print("sudir vai sudi ",filename)
-                               
-                            ext = os.path.splitext(filename)[1]
-                            if (ext == ".jpg") or (ext == ".png"):
-                                        print("File supported moving on...")
-                            
-                            
-                            destination = "/".join([path2, filename])
-                            filepath="/".join([folderpath, filename])#this is the ultimate folder path
-                            
-                            print("Accept incoming file:", filename)
-                            print("Save it to:", destination)
-                            
-                            registeruser.start_with_hash_password(email,pw,firstname,country,kala,filepath)#registration done here
-                            
-                            
-                            
+                        registeruser.start_with_hash_password(email,pw,kala) #registration done here
+                        session['userid']=email
+                        session['pw']=pw
+                        print("i am here fucker ")
+                        return redirect(url_for('home'))
+               
+            return redirect(url_for('face'))    
+@app.route("/farmerdashboard") 
+def farmerdashboard():
+      if not 'userid' in session:
+        return redirect('face')
+      email=session['userid']
+      pw=session['pw']
+      print(email,"   ",pw)
+      kala=usefulhasing.u_and_p_hash(email,pw)
+        
 
-                            session['userid']=email
-                            session['pw']=pw
-                            upload.save(destination)
-                session['userid']=email
-                session['pw']=pw
+      a=findfordetail.detailforfarmer(kala)
+
+
+      return render_template("farmer_dashboard.html",data=a)
+                
        
-                return  redirect("newsfeed")
 
 
 
