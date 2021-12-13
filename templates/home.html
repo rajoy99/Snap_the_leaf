@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+ 
     <title>STL Homepage</title>
-
+ 
     <style>
         .form-submit-button {
             background:#0066A2;
@@ -19,33 +19,66 @@
             font:bold10px arial,sans-serif;
             text-shadow:none;
        }
+
+       ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 10%;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+      
+      li a {
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+      
+      li a.active {
+        background-color:purple;
+        color: white;
+      }
+      
+      li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+      }
     </style>
 </head>
-<body style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(238, 240, 236));">
-    
+<body style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(179, 185, 173));">
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#farmer_dboard">Dashboard</a></li>
+        <li><a href="#logout">Log Out</a></li>
+      </ul>
+
 <center>
-
+ 
 <div style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(238, 240, 236));">
-
+ 
     <div id="heading" style="white-space:nowrap">
-
+ 
         <div id="image" style=" margin-top:60px">
             <img src="../static/images/leaf-logo-300x300.png" alt=logo height="92" width="92"/>
         </div>
-    
+ 
         <div id="texts" style="display:inline; white-space:nowrap; color:purple; font-size: 50px;"> 
             Snap The Leaf 
         </div>
-    
+ 
     </div>
-
+ 
     <br>
     <br>
     <br>
-    
+ 
     <form id="upload-file" method="post" enctype="multipart/form-data" action="predict">
          <input type="file" name="file" class="btn btn-outline-info" id="imageUpload" accept=".png, .jpg, .jpeg">
-
+ 
          <label for="predictor">Choose a Predictor Model:</label>
          <select name="predictor" id="predictor">
            <option value="resnet">ResNet</option>
@@ -66,37 +99,37 @@
          font-size: 28px;
          margin: 4px 2px;
          cursor: pointer" type="submit" value="Predict the disease">
-
+ 
     </form>
-
-
-
-
+ 
+ 
+ 
+ 
     <div class="loader" style="display:none;"></div>
-
-
-
+ 
+ 
+ 
     <h2 id="img_url">
         <span></span>
     </h2>
-
-
-
-    </div>
-
-
-
-
-
  
-
-
-    
+ 
+ 
+    </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </center><br><br>
-
-
-    
-
+ 
+ 
+ 
+ 
 </body>
 </html>
 {%endblock%}
