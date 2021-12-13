@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Dashboard </title>
+    <title>Admin Page </title>
     <style>
         .card {
           box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -45,7 +45,10 @@
         <img src="potato.jpeg" alt="Avatar" style="width:100%">
         <div class="container">
           <h4><b>pata</b></h4> 
-          <p>Verdict : {{v}}</p> 
+          <form action="/action_page.php" id="usrform">
+            Name: <input type="text" name="usrname">
+            <input type="submit">
+          </form>
         </div>
       </div>
       
