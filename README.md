@@ -17,6 +17,14 @@ This app will let the users diagnose the disease of plants just by uploading the
 
 -Showing the disease’s cure 
 
+# Technical Specifications
+
+## Dataset 
+There are four Deep learning models in the backend which will do the actual prediction task. The models were trained on the publicly available “plant village dataset”. 
+
+Plant village Dataset link : https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge
+
+
 
 Screenshot: 
 
