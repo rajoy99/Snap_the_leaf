@@ -26,7 +26,7 @@ Plant village Dataset link : https://www.crowdai.org/challenges/plantvillage-dis
 
 ## Technologies
 This web app uses Flask in Back End. As Database, MySQL has been used.
-![plot](Flask-logo-vector-01.svg)[height=20px,width=20px]
+<img alt="Flask" width="30px" src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/flask.svg"/>
 ![plot](Mysql_logo.png)
 
 Screenshot: 
