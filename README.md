@@ -35,3 +35,6 @@ Database :  <img alt="MySQL" width="50px" src="https://upload.wikimedia.org/wiki
 Screenshot: 
 
 ![plot](scr_face.png)
+![plot](home.png)
+![plot](dashboard.png)
+![plot](admin_page.png)
