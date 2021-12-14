@@ -7,7 +7,7 @@ def diseaseforconformation():
     result=con.fetchall()
     return result
 def detailforfarmer(folder):
-    sql="SELECT filepath, userrequestforverdict.uniqueidentity, verdictdetails.verdict FROM userrequestforverdict INNER JOIN verdictdetails ON userrequestforverdict.uniqueidentity =verdictdetails.uniqueidentity WHERE verdict='c' and userrequestforverdict.folder=%s"
+    sql="SELECT filepath, userrequestforverdict.uniqueidentity, verdictdetails.details FROM userrequestforverdict INNER JOIN verdictdetails ON userrequestforverdict.uniqueidentity =verdictdetails.uniqueidentity WHERE verdict='c' and userrequestforverdict.folder=%s"
     value=(folder,)
     
     con.execute(sql,value)
