@@ -18,6 +18,10 @@ This app will let the users diagnose the disease of plants just by uploading the
 -Showing the disease’s cure 
 
 
+https://user-images.githubusercontent.com/61883509/145953999-eaaac29d-6708-4601-b50b-b126b9fcf957.mp4
+
+
+
 
 # Technical Specifications
 
