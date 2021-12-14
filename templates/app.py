@@ -17,7 +17,6 @@ import time
 import checkvalidtion,usefulhasing,filesys,registeruser,connection,detectuser,userrequestforverdict,dataforadminpanel,updateforadminans,findfordetail
 import iputuserhelp
 
-
 # Flask utils
 from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
@@ -155,14 +154,14 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        img_url='D:\Snap_the_leaf-master\static\images\probability_bars.png'
+        img_url='static/images/probability_bars.png'
         plt.figure(figsize=(15,6))
         plt.barh(disease_class,a,color='green')   
         plt.tight_layout()
         plt.savefig(img_url)
         
         
-        return render_template("resulting.html",path=filepathidentity,img=img_url,result=result)
+        return render_template("resulting.html",path=filepathidentity,img=img_url)
             
         
         
@@ -312,39 +311,24 @@ def farmerdashboard():
 
 
       return render_template("farmer_dashboard.html",data=a)
-# @app.route("/tomato_bacterial_spot")
-# def tomato_bacterial_spot():
-#     return render_template("tomato_bacterial_spot.html")
+@app.route("/tomato_bacterial_spot")
+def tomato_bacterial_spot():
+    return render_template("tomato_bacterial_spot.html")
     
-# @app.route("/tomato_early_bright.html")
-# def tomato_early_bright():
-#     return render_template("tomato_early_bright")
-# @app.route("/tomato_late_bright")
-# def tomato_bacterial_spot():
-#     return render_template("tomato_bacterial_spot")
-# @app.route("/tomato_bacterial_spot")
-# def tomato_bacterial_spot():
-#     return render_template("tomato_bacterial_spot")
-# @app.route("/tomato_bacterial_spot")
-# def tomato_bacterial_spot():
-#     return render_template("tomato_bacterial_spot")
-      
-@app.route("/searchcure/<result>")
-def searchcure(result):
-    print("result for magi",result)
+@app.route("/tomato_early_bright.html")
+def tomato_early_bright():
+    return render_template("tomato_early_bright")
+@app.route("/tomato_late_bright")
+def tomato_bacterial_spot():
+    return render_template("tomato_bacterial_spot")
+@app.route("/tomato_bacterial_spot")
+def tomato_bacterial_spot():
+    return render_template("tomato_bacterial_spot")
+@app.route("/tomato_bacterial_spot")
+def tomato_bacterial_spot():
+    return render_template("tomato_bacterial_spot")
+       
 
-    disease_class = ['Pepper__bell___Bacterial_spot', 'Pepper__bell___healthy', 'Potato___Early_blight',
-                    'Potato___Late_blight', 'Potato___healthy', 'Tomato_Bacterial_spot', 'Tomato_Early_blight',
-                    'Tomato_Late_blight', 'Tomato_Leaf_Mold', 'Tomato_Septoria_leaf_spot',
-                    'Tomato_Spider_mites_Two_spotted_spider_mite', 'Tomato__Target_Spot',
-                    'Tomato__Tomato_YellowLeaf__Curl_Virus', 'Tomato__Tomato_mosaic_virus', 'Tomato_healthy']
-
-    pages = ['pepper_bell_bacterial.html','healthy.html','potato_early_blight.html','potato_late_blight.html','healthy.html','tomato_bacterial_spot.html','tomato_early_blight.html','tomato_late_blight.html','tomato_leaf_mold.html','tomato_septoria_leaf_spot.html','tomato_spider_mites.html','tomato_target_spot.html','tomato_yellow_leaf.html','tomato_mosaic_virus.html','healthy.html']
-
-    cure_map=dict(zip(disease_class,pages))
-
-    print(cure_map[result])
-    return render_template(cure_map[result])
 
 
 

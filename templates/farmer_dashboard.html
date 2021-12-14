@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Farmer Dashboard </title>
     <style>
         .card {
@@ -12,7 +13,7 @@
           width: 20%;
           border-radius: 15px;
           background-color:#fbff00;
-          margin-left: 180px;
+          margin-left: 200px;
         }
  
         .card:hover {
@@ -61,7 +62,7 @@
  
  
  
-    <div style="color:rgb(0, 0, 0); background-color:#fbff00; height: 60px;width: 1450px;text-align: center;"> 
+    <div style="color:rgb(0, 0, 0); background-color:#fbff00; height: 60px;width: 1900px;text-align: center;"> 
  
         <img src="../static/images/leaf-logo-300x300.png" alt=logo height="42" width="42"/>
  
@@ -70,22 +71,23 @@
     </div>
 
     <ul>
-      <li><a  href="#home">Home</a></li>
-      <li><a class="active" href="#farmer_dboard">Dashboard</a></li>
-      <li><a href="#logout">Log Out</a></li>
+      <li><a  href="home">Home</a></li>
+      <li><a class="active" >Dashboard</a></li>
+      <li><a href="logout">Log Out</a></li>
     </ul>
 
 
  
     <h2 align="center"> Verdict from the plant disease expert:  </h2>
+  {%for datum in data %}
  
     <div class="card" >
-        <img src="potato.jpeg" alt="Avatar" style="width:100%">
+        <img src="../static/{{datum[0]}}" alt="Avatar" style="width:100%">
         <div class="container">
-          <p>Verdict : {{v}}</p> 
+          <p>Verdict : {{datum[2]}}</p> 
         </div>
       </div>
- 
+ {%endfor%}
 
  
  
