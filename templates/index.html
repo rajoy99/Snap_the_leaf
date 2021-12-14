@@ -1,0 +1,76 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>STL Homepage</title>
+</head>
+<body>
+    
+<center>
+
+<div style="background-image: linear-gradient(to right, rgba(243, 87, 87, 0), rgb(238, 240, 236));">
+
+    <div id="heading" style="white-space:nowrap">
+
+        <div id="image" style="display:inline;">
+            <img src="../static/images/green-leaf-transparent-background-17.png" alt=logo height="32" width="32"/>
+        </div>
+    
+        <div id="texts" style="display:inline; white-space:nowrap; color:purple; font-size: 40px;"> 
+            Snap The Leaf 
+        </div>
+    
+    </div>
+
+    <br>
+    
+    <form id="upload-file" method="post" enctype="multipart/form-data" action="predict">
+         <input type="file" name="file" class="btn btn-outline-info" id="imageUpload" accept=".png, .jpg, .jpeg">
+
+         <label for="predictor">Choose a Predictor Model:</label>
+         <select name="predictor" id="predictor">
+           <option value="resnet">ResNet</option>
+           <option value="dnet">Dense Net </option>
+           <option value="cnn">Baseline CNN</option>
+           <option value="imagenet">ImageNet</option>
+         </select>
+
+         <input type="submit" value="Predict the disease">
+
+    </form>
+
+
+
+
+    <div class="loader" style="display:none;"></div>
+
+
+
+    <h2 id="img_url">
+        <span></span>
+    </h2>
+
+
+
+    </div>
+
+
+
+
+
+ 
+
+
+    
+</center><br><br>
+
+
+    
+
+</body>
+</html>
+{%endblock%}

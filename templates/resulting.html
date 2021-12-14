@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Plotting </title>
     <style>
         ul {
@@ -40,29 +41,30 @@
 </head>
 <body>
  
-    <div style="color:rgb(0, 0, 0); background-color:#fbff00; height: 60px;width: 1450px;text-align: center;"> 
+    <div style="color:rgb(0, 0, 0); background-color:#fbff00; height: 60px;width: 1900px;text-align: center;"> 
         <img src="../static/images/leaf-logo-300x300.png" alt=logo height="42" width="42"/>
         <span style="text-align:center ; font-size:50px"> Result DashBoard </span>
  
     </div>
 
     <ul>
-        <li><a class=href="#home">Home</a></li>
-        <li><a href="#farmer_dboard">Dashboard</a></li>
-        <li><a href="#logout">Log Out</a></li>
+        <li><a class=href="home">Home</a></li>
+        <li><a href="farmerdashboard">Dashboard</a></li>
+        <li><a href="logout">Log Out</a></li>
       </ul>
  
     <h3 id="result" align="center" style="margin-top :30px">
         The detected disease is : <span style="color:red"> {{result}} </span>
  
-        <button id='cure' style="background-color: rgb(23, 83, 15); color:white "> See Cure for this disease </button>
- 
+        <div class='curefor' id="{{result}}">
+            <button  style="background-color: rgb(23, 83, 15); color:white;margin-left: 30px; "> See Cure for this disease </button>
+        </div>
     </h3>
  
     <div style="margin-top: 40px; margin-left: 290px;margin-right: 50px;">
         <h4> The following chart shows the probability considered by the AI while making the decision: </h4>
  
-        <img src={{img_url}} alt="Chart" height="450px" width="990px">
+        <img src="../static/images/probability_bars.png" alt="Chart" height="450px" width="990px">
     </div>
  
         <div class="proceed" class="notstatisfied" style="text-align: center;">
@@ -96,6 +98,12 @@
               $(".notstatisfied").click(function(){
                   window.location.replace('/adminhelp/'+path)
  
+              });
+              $(".curefor").click(function(){
+                var result=document.getElementsByClassName("curefor")[0].id
+                 
+                window.location.replace('/searchcure/'+result)
+
               });
  
             });
