@@ -17,8 +17,7 @@ This app will let the users diagnose the disease of plants just by uploading the
 
 -Showing the disease’s cure 
 
-# Presentation 
-<video src='https://github.com/rajoy99/Snap_the_leaf/blob/master/presentation.mp4' />
+
 
 # Technical Specifications
 
