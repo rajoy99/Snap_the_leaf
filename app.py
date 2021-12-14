@@ -155,11 +155,11 @@ def upload():
         ind=np.argmax(a)
         print('Prediction:', disease_class[ind])
         result=disease_class[ind]
-        img_url='static/images/probability_bars.png'
+        img_url='D:\Snap_the_leaf-master\static\images\probability_bars.png'
         plt.figure(figsize=(15,6))
         plt.barh(disease_class,a,color='green')   
         plt.tight_layout()
-       # plt.savefig(img_url)
+        plt.savefig(img_url)
         
         
         return render_template("resulting.html",path=filepathidentity,img=img_url,result=result)
