@@ -24,7 +24,10 @@ There are four Deep learning models in the backend which will do the actual pred
 
 Plant village Dataset link : https://www.crowdai.org/challenges/plantvillage-disease-classification-challenge
 
-
+## Technologies
+This web app uses Flask in Back End. As Database, MySQL has been used.
+![plot](Flask-logo-vector-01.svg)
+![plot](Mysql_logo.png)
 
 Screenshot: 
 
