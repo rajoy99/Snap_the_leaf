@@ -8,9 +8,13 @@ This app will let the users diagnose the disease of plants just by uploading the
 
 # Features
 -Predict the disease of the plant just by uploading the picture of leaf.
+
 -Choosing 4 different predictors 
+
 -Showing the probability that the AI think the disease the infected plant belongs to 
+
 -If the user thinks that the prediction is not correct, he can forward it for an expert’s decision. 
+
 -Showing the disease’s cure 
 
 
