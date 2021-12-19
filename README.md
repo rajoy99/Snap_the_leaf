@@ -4,7 +4,7 @@ Software Engineering Course Project : Snap the leaf
 ![plot](billboard.png)
 
 # Motivation 
-This app will let the users diagnose the disease of plants just by uploading the image of an infected leaf. A deep learning model will run the backend of this web app, which will perform the prediction task. This app will be helpful to both professional farmers and amateur horticulturists alike in diagnosing plant disease
+This app will let the users diagnose the disease of plants just by uploading the image of an infected leaf. Four deep learning model  runs the backend of this web app, which will perform the prediction task. This app will be helpful to both professional farmers and amateur horticulturists alike in diagnosing plant disease.  One model is Baseline CNN and other 3 models are Transfer learning based ( DenseNet, ResNet, ImageNet). 
 
 # Features
 -Predict the disease of the plant just by uploading the picture of leaf.
